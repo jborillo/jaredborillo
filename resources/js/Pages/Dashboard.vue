@@ -22,6 +22,6 @@
 import Layout from "@/Layouts/Layout.vue";
 
 export default {
-  layout:Layout
+  layout:Layout,
 };
 </script>
