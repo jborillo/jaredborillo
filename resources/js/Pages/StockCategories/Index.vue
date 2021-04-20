@@ -21,7 +21,7 @@
                                 <th class="px-4 py-3">Date Created</th>
                             </tr>
 
-                            <tr v-for="item in stock_categories" class="bg-gray-100 border-b border-gray-200">
+                            <tr v-for="item in stock_categories" :key="item.id" class="bg-gray-100 border-b border-gray-200">
                                 <td class="px-4 py-3">{{item.id}}</td>
                                 <td class="px-4 py-3">{{item.description}}</td>
                                 <td class="px-4 py-3">{{item.type}}</td>

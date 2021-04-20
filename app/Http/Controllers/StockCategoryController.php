@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stock;
 use App\Models\StockCategory;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -39,7 +40,7 @@ class StockCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
