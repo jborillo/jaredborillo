@@ -126,11 +126,15 @@
         </div>
       </div>
   </div>
+  <flash-messages />
 </template>
 
 <script>
+import FlashMessages from "@/Components/FlashMessages";
 export default {
-
+    components: {
+        FlashMessages,
+    }
 }
 </script>
 

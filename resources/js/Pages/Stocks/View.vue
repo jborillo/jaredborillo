@@ -3,7 +3,12 @@
     <Layout>
       <div class="flex justify-center w-full">
         <div class="bg-white flex flex-col w-1/3 mt-20 p-6">
+        <div class="flex flex-row justify-between">
           <h2 class="text-lg">Stock Form</h2>
+          <inertia-link :href="route('stock.destroy', form.id)" method="delete">
+              Delete
+            </inertia-link>
+            </div>
           <form id="stock-form" name="stock-form" v-on:submit.prevent="submit">
             <div class="flex flex-col pt-6">
               <label for="id">ID</label>
@@ -13,6 +18,7 @@
                 name="id"
                 v-model="form.id"
                 autocomplete="off"
+                readonly
               />
               <div class="text-red-700 text-sm">
                 {{ errors.id }}
@@ -94,7 +100,7 @@
 
             <div class="flex flex-col pt-6">
               <button type="submit" class="bg-indigo-800 text-white p-2">
-                Save
+                Update
               </button>
             </div>
           </form>
@@ -116,23 +122,24 @@ export default {
 
   props: {
     errors: Object,
+    model: Object,
     stocks: Array,
     success:String,
   },
 
   setup(props, context) {
     const form = reactive({
-      id: null,
-      description: null,
-      stock_category_id: null,
-      uom: null,
-      barcode: null,
-      discontinued: "Y",
+      id: props.model.id,
+      description: props.model.description,
+      stock_category_id: props.model.stock_category_id,
+      uom: props.model.uom,
+      barcode: props.model.barcode,
+      discontinued: props.model.discontinued,
       photo_path: null,
     });
 
     const submit = () => {
-      Inertia.post(route("stock.store"), form, {
+      Inertia.put(route("stock.update", form), form, {
         onSuccess: () => {
           // Handle success event
           form.id = null;
